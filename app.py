@@ -13,8 +13,15 @@ def validate_twilio_request(f):
     """Validates that incoming requests genuinely originated from Twilio"""
     @wraps(f)
     def decorated_function(*args, **kwargs):
+        # Get TWILIO_AUTH_TOKEN
+        if app.env == "development":
+            TWILIO_AUTH_TOKEN = os.environ.get('TWILIO_AUTH_TOKEN')
+        elif app.env == "production":
+            with open('/etc/config.json') as config_file:
+                config = json.load(config_file)
+                TWILIO_AUTH_TOKEN = config.get("TWILIO_AUTH_TOKEN")
         # Create an instance of the RequestValidator class
-        validator = RequestValidator(os.environ.get('TWILIO_AUTH_TOKEN'))
+        validator = RequestValidator(TWILIO_AUTH_TOKEN)
 
         # Validate the request using its URL, POST data,
         # and X-TWILIO-SIGNATURE header
