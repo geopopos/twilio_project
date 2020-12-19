@@ -1,0 +1,10 @@
+### To-Do
+[] define how I will manage messenger flows
+[] when I text the bot, add a task, how should it respond?
+[] How should I manage the state between flows? A dag? should their be data validation?
+[] When should I push data to the Notion update queue?
+[] What sort of text based requests should i accept?
+   - add task
+   - add to inbox
+   - add scheduled event (add google calendar event and notion row)
+[] What should I use for the queue?
