@@ -42,7 +42,7 @@ def validate_twilio_request(f):
 
 @app.route("/")
 def hello():
-    return "Hello World"
+    return "Hello Groot"
 
 @app.route("/sms", methods=['GET', 'POST'])
 @validate_twilio_request
